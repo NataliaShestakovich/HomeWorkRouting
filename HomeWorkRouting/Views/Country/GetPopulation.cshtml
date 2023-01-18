@@ -1,0 +1,39 @@
+﻿@model HomeWorkRouting.Models.Population.ViewModels.FullResponce
+
+<h1> Agglomeration </h1>
+<p>
+    <h4> @Model.Country </h4>
+</p>
+
+<table class=" table">
+  <thead>
+      <tr>
+          <th> Name </th>
+          <th> Population </th>
+          <th> </th>
+      </tr>
+  </thead>  
+  <tbody>
+        @foreach (var agglomeration in Model.GeoAgglomerations)
+        {
+                <tr>
+                    <td>@agglomeration.Name </td>
+                    <td>@agglomeration.Population </td>                   
+                </tr>
+        }
+  </tbody>
+</table>
+
+@if (Model.ErrorList!= null && Model.ErrorList.Count() != 0)
+{
+     <div class="alert alert-danger">
+
+             Is not found:
+            @foreach (var city in Model.ErrorList)
+            {
+                <div>@city</div>
+            }
+     </div>
+}
+
+
